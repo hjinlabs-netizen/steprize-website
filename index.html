@@ -41,6 +41,27 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
+        /* Custom Dropdown Styling */
+        .lang-selector {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .lang-selector:hover {
+            border-color: #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+        }
+        .lang-selector option {
+            background: #0a0a0a;
+            color: #fff;
+        }
     </style>
 </head>
 <body class="text-gray-100 selection:bg-emerald-500 selection:text-black">
@@ -52,13 +73,22 @@
                 <span class="neon-text mr-2">STEP</span>RIZE
             </div>
             <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-                <a href="#features" class="hover:text-white transition-colors">Features</a>
-                <a href="#how-it-works" class="hover:text-white transition-colors">How it Works</a>
-                <a href="#" class="hover:text-white transition-colors">Roadmap</a>
+                <a href="#features" class="hover:text-white transition-colors" data-i18n="nav_features">Features</a>
+                <a href="#how-it-works" class="hover:text-white transition-colors" data-i18n="nav_how_it_works">How it Works</a>
+                <a href="#" class="hover:text-white transition-colors" data-i18n="nav_roadmap">Roadmap</a>
             </div>
-            <a href="#" class="neon-button text-black px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider">
-                Launch App
-            </a>
+            <div class="flex items-center gap-4">
+                <select id="languageSelector" class="lang-selector">
+                    <option value="en">EN</option>
+                    <option value="tr">TR</option>
+                    <option value="az">AZ</option>
+                    <option value="ru">RU</option>
+                    <option value="zh">ZH</option>
+                </select>
+                <a href="#" class="neon-button text-black px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider" data-i18n="nav_launch">
+                    Launch App
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -69,19 +99,19 @@
         <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-[120px] -z-10"></div>
         
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <h1 class="text-5xl md:text-8xl font-black mb-8 leading-tight tracking-tighter">
+            <h1 class="text-5xl md:text-8xl font-black mb-8 leading-tight tracking-tighter" data-i18n="hero_title">
                 Step Up, Stay Active,<br>
                 <span class="neon-text">Earn Prizes.</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+            <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed" data-i18n="hero_description">
                 The next generation Move-to-Earn ecosystem that rewards your daily activity with real value. Track, compete, and level up your lifestyle.
             </p>
             <div class="flex flex-col md:flex-row items-center justify-center gap-6">
                 <a href="#" class="neon-button pulse-animation text-black px-10 py-5 rounded-2xl text-lg font-bold flex items-center gap-3">
                     <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414C17.2024 15.3414 16.9419 15.6019 16.9419 15.9225V17.0847H13.1613V6.91529H16.9419V8.0775C16.9419 8.39811 17.2024 8.65863 17.523 8.65863C17.8437 8.65863 18.1042 8.39811 18.1042 8.0775V6.33412C18.1042 5.3722 17.3241 4.59216 16.3622 4.59216H13.1613V2.41176C13.1613 2.09115 12.9008 1.83063 12.5801 1.83063H11.4187C11.0981 1.83063 10.8376 2.09115 10.8376 2.41176V4.59216H7.63668C6.67476 4.59216 5.89472 5.3722 5.89472 6.33412V8.0775C5.89472 8.39811 6.15524 8.65863 6.47585 8.65863C6.79646 8.65863 7.05698 8.39811 7.05698 8.0775V6.91529H10.8376V17.0847H7.05698V15.9225C7.05698 15.6019 6.79646 15.3414 6.47585 15.3414C6.15524 15.3414 5.89472 15.6019 5.89472 15.9225V17.6659C5.89472 18.6278 6.67476 19.4078 7.63668 19.4078H10.8376V21.5882C10.8376 21.9088 11.0981 22.1694 11.4187 22.1694H12.5801C12.9008 22.1694 13.1613 21.9088 13.1613 21.5882V19.4078H16.3622C17.3241 19.4078 18.1042 18.6278 18.1042 17.6659V15.9225C18.1042 15.6019 17.8437 15.3414 17.523 15.3414Z"/></svg>
-                    Download APK
+                    <span data-i18n="hero_download">Download APK</span>
                 </a>
-                <button class="glass px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/10 transition-all">
+                <button class="glass px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/10 transition-all" data-i18n="hero_explore">
                     Explore Ecosystem
                 </button>
             </div>
@@ -92,8 +122,8 @@
     <section id="features" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Powerful Mechanics</h2>
-                <p class="text-gray-400 text-lg">Designed for growth, optimized for health.</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-i18n="features_title">Powerful Mechanics</h2>
+                <p class="text-gray-400 text-lg" data-i18n="features_subtitle">Designed for growth, optimized for health.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -102,8 +132,8 @@
                     <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <svg class="w-7 h-7 neon-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Move-to-Earn</h3>
-                    <p class="text-gray-400 leading-relaxed">Convert your daily steps into SPZ tokens. The more you move, the more you earn. Simple as that.</p>
+                    <h3 class="text-2xl font-bold mb-4" data-i18n="feat_1_title">Move-to-Earn</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feat_1_desc">Convert your daily steps into SPZ tokens. The more you move, the more you earn. Simple as that.</p>
                 </div>
 
                 <!-- Card 2 -->
@@ -111,8 +141,8 @@
                     <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <svg class="w-7 h-7 neon-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Advanced Analytics</h3>
-                    <p class="text-gray-400 leading-relaxed">Precision step tracking and activity mapping to help you reach your peak performance every day.</p>
+                    <h3 class="text-2xl font-bold mb-4" data-i18n="feat_2_title">Advanced Analytics</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feat_2_desc">Precision step tracking and activity mapping to help you reach your peak performance every day.</p>
                 </div>
 
                 <!-- Card 3 -->
@@ -120,8 +150,8 @@
                     <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <svg class="w-7 h-7 neon-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Reward Ecosystem</h3>
-                    <p class="text-gray-400 leading-relaxed">Stake your earnings, unlock exclusive NFTs, and participate in community-driven events with huge prize pools.</p>
+                    <h3 class="text-2xl font-bold mb-4" data-i18n="feat_3_title">Reward Ecosystem</h3>
+                    <p class="text-gray-400 leading-relaxed" data-i18n="feat_3_desc">Stake your earnings, unlock exclusive NFTs, and participate in community-driven events with huge prize pools.</p>
                 </div>
             </div>
         </div>
@@ -133,7 +163,7 @@
             <div class="text-xl font-bold tracking-tighter">
                 <span class="neon-text mr-1">STEP</span>RIZE
             </div>
-            <p class="text-gray-500 text-sm">
+            <p class="text-gray-500 text-sm" data-i18n="footer_copy">
                 &copy; 2026 Steprize. Official Home of Move-to-Earn.
             </p>
             <div class="flex space-x-6">
@@ -143,6 +173,133 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const translations = {
+            en: {
+                nav_features: "Features",
+                nav_how_it_works: "How it Works",
+                nav_roadmap: "Roadmap",
+                nav_launch: "Launch App",
+                hero_title: 'Step Up, Stay Active,<br><span class="neon-text">Earn Prizes.</span>',
+                hero_description: "The next generation Move-to-Earn ecosystem that rewards your daily activity with real value. Track, compete, and level up your lifestyle.",
+                hero_download: "Download APK",
+                hero_explore: "Explore Ecosystem",
+                features_title: "Powerful Mechanics",
+                features_subtitle: "Designed for growth, optimized for health.",
+                feat_1_title: "Move-to-Earn",
+                feat_1_desc: "Convert your daily steps into SPZ tokens. The more you move, the more you earn. Simple as that.",
+                feat_2_title: "Advanced Analytics",
+                feat_2_desc: "Precision step tracking and activity mapping to help you reach your peak performance every day.",
+                feat_3_title: "Reward Ecosystem",
+                feat_3_desc: "Stake your earnings, unlock exclusive NFTs, and participate in community-driven events with huge prize pools.",
+                footer_copy: "&copy; 2026 Steprize. Official Home of Move-to-Earn."
+            },
+            tr: {
+                nav_features: "Özellikler",
+                nav_how_it_works: "Nasıl Çalışır",
+                nav_roadmap: "Yol Haritası",
+                nav_launch: "Uygulamayı Başlat",
+                hero_title: 'Adım At, Aktif Kal,<br><span class="neon-text">Ödüller Kazan.</span>',
+                hero_description: "Günlük aktivitenizi gerçek değerle ödüllendiren yeni nesil Kazan-Hareketi ekosistemi. Takip et, yarış ve yaşam tarzını seviye atlat.",
+                hero_download: "APK İndir",
+                hero_explore: "Ekosistemi Keşfet",
+                features_title: "Güçlü Mekanizmalar",
+                features_subtitle: "Büyüme için tasarlandı, sağlık için optimize edildi.",
+                feat_1_title: "Kazanmak için Hareket Et",
+                feat_1_desc: "Günlük adımlarınızı SPZ tokenlarına dönüştürün. Ne kadar çok hareket ederseniz o kadar çok kazanırsınız. Bu kadar basit.",
+                feat_2_title: "Gelişmiş Analitik",
+                feat_2_desc: "Her gün zirve performansınıza ulaşmanıza yardımcı olacak hassas adım takibi ve aktivite haritalama.",
+                feat_3_title: "Ödül Ekosistemi",
+                feat_3_desc: "Kazançlarınızı stake edin, özel NFT'lerin kilidini açın ve büyük ödül havuzlu topluluk etkinliklerine katılın.",
+                footer_copy: "&copy; 2026 Steprize. Harekete Geç Kazan'ın Resmi Evi."
+            },
+            az: {
+                nav_features: "Xüsusiyyətlər",
+                nav_how_it_works: "Necə İşləyir",
+                nav_roadmap: "Yol Xəritəsi",
+                nav_launch: "Tətbiqi Başlat",
+                hero_title: 'Addım At, Aktiv Qal,<br><span class="neon-text">Mükafatlar Qazan.</span>',
+                hero_description: "Gündəlik fəaliyyətinizi real dəyərlə mükafatlandıran yeni nəsil Hərəkət-et-Qazan ekosistemi. İzləyin, rəqabət aparın və həyat tərzinizi yüksəldin.",
+                hero_download: "APK Yüklə",
+                hero_explore: "Ekosistemi Kəşf Et",
+                features_title: "Güclü Mexanizmlər",
+                features_subtitle: "İnkişaf üçün hazırlanmış, sağlamlıq üçün optimallaşdırılmışdır.",
+                feat_1_title: "Hərəkət-et-Qazan",
+                feat_1_desc: "Gündəlik addımlarınızı SPZ tokenlərinə çevirin. Nə qədər çox hərəkət etsəniz, bir o qədər çox qazanacaqsınız. Bu qədər sadə.",
+                feat_2_title: "Təkmil Analitika",
+                feat_2_desc: "Hər gün ən yüksək performansınıza çatmağınıza kömək edəcək dəqiq addım izləmə və fəaliyyət xəritələşdirilməsi.",
+                feat_3_title: "Mükafat Ekosistemi",
+                feat_3_desc: "Qazanclarınızı stake edin, eksklüziv NFT-ləri açın və böyük mükafat fondları olan icma tədbirlərində iştirak edin.",
+                footer_copy: "&copy; 2026 Steprize. Hərəkət-et-Qazan-ın Rəsmi Evi."
+            },
+            ru: {
+                nav_features: "Функции",
+                nav_how_it_works: "Как это работает",
+                nav_roadmap: "Дорожная карта",
+                nav_launch: "Запустить приложение",
+                hero_title: 'Шагай вперед, оставайся активным,<br><span class="neon-text">получай призы.</span>',
+                hero_description: "Экосистема Move-to-Earn нового поколения, которая вознаграждает вашу ежедневную активность реальной ценностью. Отслеживайте, соревнуйтесь и улучшайте свой образ жизни.",
+                hero_download: "Скачать APK",
+                hero_explore: "Исследовать экосистему",
+                features_title: "Мощная механика",
+                features_subtitle: "Создано для роста, оптимизировано для здоровья.",
+                feat_1_title: "Двигайся и зарабатывай",
+                feat_1_desc: "Превращайте свои ежедневные шаги в токены SPZ. Чем больше вы двигаетесь, тем больше зарабатываете. Все просто.",
+                feat_2_title: "Продвинутая аналитика",
+                feat_2_desc: "Точное отслеживание шагов и картирование активности, которые помогут вам достигать пика производительности каждый день.",
+                feat_3_title: "Экосистема вознаграждений",
+                feat_3_desc: "Стейкайте свои доходы, разблокируйте эксклюзивные NFT и участвуйте в общественных мероприятиях с огромными призовыми фондами.",
+                footer_copy: "&copy; 2026 Steprize. Официальный дом Move-to-Earn."
+            },
+            zh: {
+                nav_features: "功能",
+                nav_how_it_works: "运作原理",
+                nav_roadmap: "路线图",
+                nav_launch: "启动应用",
+                hero_title: '迈步前进，保持活力，<br><span class="neon-text">赢得奖品。</span>',
+                hero_description: "下一代 Move-to-Earn 生态系统，以真实价值奖励您的日常活动。追踪、竞争并升级您的生活方式。",
+                hero_download: "下载 APK",
+                hero_explore: "探索生态系统",
+                features_title: "强大的机制",
+                features_subtitle: "为增长而设计，为健康而优化。",
+                feat_1_title: "边动边赚",
+                feat_1_desc: "将您的日常步数转换为 SPZ 代币。动得越多，赚得越多。就这么简单。",
+                feat_2_title: "高级分析",
+                feat_2_desc: "精准的步数追踪和活动映射，助您每天达到巅峰表现。",
+                feat_3_title: "奖励生态系统",
+                feat_3_desc: "质押您的收益，解锁专属 NFT，并参与拥有巨额奖池的社区活动。",
+                footer_copy: "&copy; 2026 Steprize. Move-to-Earn 官方主页。"
+            }
+        };
+
+        function updateLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            localStorage.setItem('preferredLanguage', lang);
+            document.documentElement.lang = lang;
+        }
+
+        const languageSelector = document.getElementById('languageSelector');
+        
+        languageSelector.addEventListener('change', (e) => {
+            updateLanguage(e.target.value);
+        });
+
+        // Initialization
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            const browserLang = navigator.language.split('-')[0];
+            const defaultLang = savedLang || (translations[browserLang] ? browserLang : 'en');
+            
+            languageSelector.value = defaultLang;
+            updateLanguage(defaultLang);
+        });
+    </script>
 
 </body>
 </html>
