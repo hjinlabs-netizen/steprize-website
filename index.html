@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steprize - Move to Earn & Marketplace</title>
+    <title>Steprize - Step Tracking & Rewards</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -72,9 +72,9 @@
                 <span class="neon-text mr-2">STEP</span>RIZE
             </div>
             <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-                <a href="#features" class="hover:text-white transition-colors" data-i18n="nav_home">Home</a>
-                <a href="#marketplace" class="hover:text-white transition-colors" data-i18n="nav_store">Marketplace</a>
-                <a href="#" class="hover:text-white transition-colors" data-i18n="nav_inventory">Inventory</a>
+                <a href="#" class="hover:text-white transition-colors" data-i18n="nav_home">Home</a>
+                <a href="#how-it-works" class="hover:text-white transition-colors" data-i18n="nav_how_it_works">How It Works</a>
+                <a href="#support" class="hover:text-white transition-colors" data-i18n="nav_support">Support</a>
             </div>
             <div class="flex items-center gap-4">
                 <select id="languageSelector" class="lang-selector">
@@ -102,54 +102,53 @@
                 <span class="neon-text">LEVEL UP YOUR LIFE.</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed" data-i18n="hero_description">
-                Track your real-time steps and GPS to earn COINS. Experience the next level of fitness rewards with Nitro Starter, Chrono Glass, and Cosmic Shatter sneakers.
+                Download Steprize to turn your physical activity into rewards. Our advanced sensor fusion technology accurately tracks every step you take.
             </p>
             <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                <a href="#" class="neon-button pulse-animation text-black px-10 py-5 rounded-2xl text-lg font-bold flex items-center gap-3">
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414C17.2024 15.3414 16.9419 15.6019 16.9419 15.9225V17.0847H13.1613V6.91529H16.9419V8.0775C16.9419 8.39811 17.2024 8.65863 17.523 8.65863C17.8437 8.65863 18.1042 8.39811 18.1042 8.0775V6.33412C18.1042 5.3722 17.3241 4.59216 16.3622 4.59216H13.1613V2.41176C13.1613 2.09115 12.9008 1.83063 12.5801 1.83063H11.4187C11.0981 1.83063 10.8376 2.09115 10.8376 2.41176V4.59216H7.63668C6.67476 4.59216 5.89472 5.3722 5.89472 6.33412V8.0775C5.89472 8.39811 6.15524 8.65863 6.47585 8.65863C6.79646 8.65863 7.05698 8.39811 7.05698 8.0775V6.91529H10.8376V17.0847H7.05698V15.9225C7.05698 15.6019 6.79646 15.3414 6.47585 15.3414C6.15524 15.3414 5.89472 15.6019 5.89472 15.9225V17.6659C5.89472 18.6278 6.67476 19.4078 7.63668 19.4078H10.8376V21.5882C10.8376 21.9088 11.0981 22.1694 11.4187 22.1694H12.5801C12.9008 22.1694 13.1613 21.9088 13.1613 21.5882V19.4078H16.3622C17.3241 19.4078 18.1042 18.6278 18.1042 17.6659V15.9225C18.1042 15.6019 17.8437 15.3414 17.523 15.3414Z"/></svg>
-                    <span data-i18n="btn_download">Download Now</span>
+                <a href="#" class="neon-button pulse-animation text-black px-12 py-5 rounded-2xl text-xl font-bold flex items-center gap-3">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414C17.2024 15.3414 16.9419 15.6019 16.9419 15.9225V17.0847H13.1613V6.91529H16.9419V8.0775C16.9419 8.39811 17.2024 8.65863 17.523 8.65863C17.8437 8.65863 18.1042 8.39811 18.1042 8.0775V6.33412C18.1042 5.3722 17.3241 4.59216 16.3622 4.59216H13.1613V2.41176C13.1613 2.09115 12.9008 1.83063 12.5801 1.83063H11.4187C11.0981 1.83063 10.8376 2.09115 10.8376 2.41176V4.59216H7.63668C6.67476 4.59216 5.89472 5.3722 5.89472 6.33412V8.0775C5.89472 8.39811 6.15524 8.65863 6.47585 8.65863C6.79646 8.65863 7.05698 8.39811 7.05698 8.0775V6.91529H10.8376V17.0847H7.05698V15.9225C7.05698 15.6019 6.79646 15.3414 6.47585 15.3414C6.15524 15.3414 5.89472 15.6019 5.89472 15.9225V17.6659C5.89472 18.6278 6.67476 19.4078 7.63668 19.4078H10.8376V21.5882C10.8376 21.9088 11.0981 22.1694 11.4187 22.1694H12.5801C12.9008 22.1694 13.1613 21.5882V19.4078H16.3622C17.3241 19.4078 18.1042 18.6278 18.1042 17.6659V15.9225C18.1042 15.6019 17.8437 15.3414 17.523 15.3414Z"/></svg>
+                    <span data-i18n="btn_download">Download APK</span>
                 </a>
-                <button class="glass px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/10 transition-all" data-i18n="nav_store">
-                    Marketplace
-                </button>
             </div>
         </div>
     </section>
 
-    <!-- Marketplace Section -->
-    <section id="marketplace" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-i18n="marketplace_title">Marketplace</h2>
-                <p class="text-gray-400 text-lg" data-i18n="marketplace_description">Exchange your hard-earned steps for digital subscriptions and tiered sneakers.</p>
+    <!-- Content Sections -->
+    <section class="py-24 relative border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-6">
+            <!-- How It Works -->
+            <div id="how-it-works" class="mb-32">
+                <h2 class="text-4xl md:text-5xl font-black mb-10 tracking-tighter" data-i18n="how_it_works_title">HOW IT WORKS</h2>
+                <div class="space-y-8 text-gray-400 text-lg leading-relaxed font-light">
+                    <p data-i18n="how_it_works_p1">
+                        Steprize leverages advanced Android sensor architecture to verify your physical movement in real-time. By utilizing a sophisticated fusion of the device's high-precision <strong>STEP_DETECTOR</strong> and <strong>STEP_COUNTER</strong> sensors, the app captures every stride with minimal battery impact.
+                    </p>
+                    <p data-i18n="how_it_works_p2">
+                        To ensure the authenticity of your activity, our <strong>Fused Location Provider</strong> intelligently cross-references movement with GPS data. This multi-layered validation prevents simulated activity, ensuring that every COIN you earn represents genuine physical effort.
+                    </p>
+                    <p data-i18n="how_it_works_p3">
+                        All data is securely synchronized with our backend via encrypted channels. As you walk, the app calculates your earnings based on your active sneakers and credits your balance instantly, creating a seamless bridge between your fitness goals and tangible rewards.
+                    </p>
+                </div>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="glass p-10 rounded-3xl hover:border-emerald-500/30 transition-all group">
-                    <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7 neon-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4" data-i18n="shoe_nitro_starter">Nitro Starter</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="equip_shoe_hint">Equip Shoe from Store to Earn Coins</p>
-                </div>
 
-                <!-- Card 2 -->
-                <div class="glass p-10 rounded-3xl hover:border-emerald-500/30 transition-all group">
-                    <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7 neon-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+            <!-- Support -->
+            <div id="support">
+                <h2 class="text-4xl md:text-5xl font-black mb-10 tracking-tighter" data-i18n="support_title">SUPPORT</h2>
+                <div class="glass p-8 md:p-12 rounded-3xl border-emerald-500/20">
+                    <p class="text-gray-400 text-lg mb-8" data-i18n="support_description">
+                        Need assistance? Our dedicated support team is ready to help you with any technical issues or account inquiries.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-500/30 transition-colors">
+                            <h4 class="text-white font-bold mb-2" data-i18n="support_in_app_title">In-App Tickets</h4>
+                            <p class="text-sm text-gray-500" data-i18n="support_in_app_desc">Access the Support section in your profile to open a direct ticket with our specialized desk.</p>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-500/30 transition-colors">
+                            <h4 class="text-white font-bold mb-2" data-i18n="support_chat_title">Community Chat</h4>
+                            <p class="text-sm text-gray-500" data-i18n="support_chat_desc">Join our official Telegram and Discord channels for real-time community assistance and updates.</p>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4" data-i18n="shoe_chrono_glass">Chrono Glass</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="multiplier_duration_clean">Multiplier • 30m Duration</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="glass p-10 rounded-3xl hover:border-emerald-500/30 transition-all group">
-                    <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7 neon-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4" data-i18n="shoe_cosmic_shatter">Cosmic Shatter</h3>
-                    <p class="text-gray-400 leading-relaxed" data-i18n="premium_digital_items">PREMIUM DIGITAL ITEMS</p>
                 </div>
             </div>
         </div>
@@ -162,7 +161,7 @@
                 <span class="neon-text mr-1">STEP</span>RIZE
             </div>
             <p class="text-gray-500 text-sm" data-i18n="footer_copy">
-                &copy; 2026 Steprize. Move to Earn & Marketplace.
+                &copy; 2026 Steprize. Official APK Distribution Portal.
             </p>
             <div class="flex space-x-6">
                 <a href="#" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
@@ -176,100 +175,110 @@
         const translations = {
             en: {
                 nav_home: "Home",
-                nav_store: "Store",
-                nav_inventory: "Inventory",
+                nav_how_it_works: "How It Works",
+                nav_support: "Support",
                 nav_launch: "Launch App",
                 hero_title: 'MOVE TO EARN.<br><span class="neon-text">LEVEL UP YOUR LIFE.</span>',
-                hero_description: "Track your real-time steps and GPS to earn COINS. Experience the next level of fitness rewards with Nitro Starter, Chrono Glass, and Cosmic Shatter sneakers.",
-                btn_download: "Download Now",
-                marketplace_title: "Marketplace",
-                marketplace_description: "Exchange your hard-earned steps for digital subscriptions and tiered sneakers.",
-                shoe_nitro_starter: "Nitro Starter",
-                shoe_chrono_glass: "Chrono Glass",
-                shoe_cosmic_shatter: "Cosmic Shatter",
-                equip_shoe_hint: "Equip Shoe from Store to Earn Coins",
-                multiplier_duration_clean: "Multiplier • 30m Duration",
-                premium_digital_items: "PREMIUM DIGITAL ITEMS",
-                footer_copy: "&copy; 2026 Steprize. Move to Earn & Marketplace."
+                hero_description: "Download Steprize to turn your physical activity into rewards. Our advanced sensor fusion technology accurately tracks every step you take.",
+                btn_download: "Download APK",
+                how_it_works_title: "HOW IT WORKS",
+                how_it_works_p1: "Steprize leverages advanced Android sensor architecture to verify your physical movement in real-time. By utilizing a sophisticated fusion of the device's high-precision <strong>STEP_DETECTOR</strong> and <strong>STEP_COUNTER</strong> sensors, the app captures every stride with minimal battery impact.",
+                how_it_works_p2: "To ensure the authenticity of your activity, our <strong>Fused Location Provider</strong> intelligently cross-references movement with GPS data. This multi-layered validation prevents simulated activity, ensuring that every COIN you earn represents genuine physical effort.",
+                how_it_works_p3: "All data is securely synchronized with our backend via encrypted channels. As you walk, the app calculates your earnings based on your active sneakers and credits your balance instantly, creating a seamless bridge between your fitness goals and tangible rewards.",
+                support_title: "SUPPORT",
+                support_description: "Need assistance? Our dedicated support team is ready to help you with any technical issues or account inquiries.",
+                support_in_app_title: "In-App Tickets",
+                support_in_app_desc: "Access the Support section in your profile to open a direct ticket with our specialized desk.",
+                support_chat_title: "Community Chat",
+                support_chat_desc: "Join our official Telegram and Discord channels for real-time community assistance and updates.",
+                footer_copy: "&copy; 2026 Steprize. Official APK Distribution Portal."
             },
             tr: {
                 nav_home: "Ana Sayfa",
-                nav_store: "Mağaza",
-                nav_inventory: "Envanter",
+                nav_how_it_works: "Nasıl Çalışır",
+                nav_support: "Destek",
                 nav_launch: "Uygulamayı Başlat",
                 hero_title: 'HAREKET ET KAZAN.<br><span class="neon-text">HAYATINI SEVİYE ATLAT.</span>',
-                hero_description: "COIN kazanmak için gerçek zamanlı adımlarınızı ve GPS'inizi takip edin. Nitro Starter, Chrono Glass ve Cosmic Shatter spor ayakkabılarıyla yeni nesil fitness ödüllerini deneyimleyin.",
-                btn_download: "Hemen İndir",
-                marketplace_title: "Marketplace",
-                marketplace_description: "Zorlukla kazandığınız adımlarınızı dijital abonelikler ve kademeli spor ayakkabılarıyla değiştirin.",
-                shoe_nitro_starter: "Nitro Starter",
-                shoe_chrono_glass: "Chrono Glass",
-                shoe_cosmic_shatter: "Cosmic Shatter",
-                equip_shoe_hint: "Coin Kazanmak için Mağazadan Ayakkabı Kuşanın",
-                multiplier_duration_clean: "Çarpan • 30dk Süre",
-                premium_digital_items: "PREMİUM DİJİTAL ÜRÜNLER",
-                footer_copy: "&copy; 2026 Steprize. Hareket Et Kazan & Marketplace."
+                hero_description: "Fiziksel aktivitenizi ödüllere dönüştürmek için Steprize'ı indirin. Gelişmiş sensör füzyon teknolojimiz attığınız her adımı doğru bir şekilde takip eder.",
+                btn_download: "APK İndir",
+                how_it_works_title: "NASIL ÇALIŞIR",
+                how_it_works_p1: "Steprize, fiziksel hareketinizi gerçek zamanlı olarak doğrulamak için gelişmiş Android sensör mimarisinden yararlanır. Cihazın yüksek hassasiyetli <strong>STEP_DETECTOR</strong> ve <strong>STEP_COUNTER</strong> sensörlerinin sofistike bir birleşimini kullanan uygulama, her adımı minimum pil tüketimiyle kaydeder.",
+                how_it_works_p2: "Aktivitenizin orijinalliğini sağlamak için <strong>Fused Location Provider</strong> katmanımız, hareketi GPS verileriyle akıllıca çapraz referanslar. Bu çok katmanlı doğrulama, simüle edilmiş aktiviteyi önleyerek kazandığınız her COIN'in gerçek fiziksel çabayı temsil etmesini sağlar.",
+                how_it_works_p3: "Tüm veriler, şifreli kanallar aracılığıyla arka ucumuzla güvenli bir şekilde senkronize edilir. Siz yürüdükçe, uygulama aktif spor ayakkabılarınıza göre kazancınızı hesaplar ve bakiyenize anında yansıtır, böylece fitness hedefleriniz ile somut ödüller arasında kesintisiz bir köprü oluşturur.",
+                support_title: "DESTEK",
+                support_description: "Yardıma mı ihtiyacınız var? Özel destek ekibimiz teknik sorunlar veya hesap sorguları konusunda size yardımcı olmaya hazır.",
+                support_in_app_title: "Uygulama İçi Destek",
+                support_in_app_desc: "Uzman ekibimizle doğrudan bir destek talebi oluşturmak için profilinizdeki Destek bölümüne erişin.",
+                support_chat_title: "Topluluk Sohbeti",
+                support_chat_desc: "Gerçek zamanlı topluluk yardımı ve güncellemeler için resmi Telegram ve Discord kanallarımıza katılın.",
+                footer_copy: "&copy; 2026 Steprize. Resmi APK Dağıtım Portalı."
             },
             az: {
                 nav_home: "Ana Səhifə",
-                nav_store: "Mağaza",
-                nav_inventory: "İnventar",
+                nav_how_it_works: "Necə İşləyir",
+                nav_support: "Dəstək",
                 nav_launch: "Tətbiqi Başlat",
                 hero_title: 'HƏRƏKƏT ET QAZAN.<br><span class="neon-text">HƏYATINI YÜKSƏLT.</span>',
-                hero_description: "COIN qazanmaq üçün real vaxt addımlarınızı və GPS-inizi izləyin. Nitro Starter, Chrono Glass və Cosmic Shatter idman ayaqqabıları ilə yeni nəsil fitness mükafatlarını hiss edin.",
-                btn_download: "İndi Yüklə",
-                marketplace_title: "Marketplace",
-                marketplace_description: "Zəhmətlə qazandığınız addımlarınızı rəqəmsal abunəliklər və pilləli idman ayaqqabıları ilə dəyişdirin.",
-                shoe_nitro_starter: "Nitro Starter",
-                shoe_chrono_glass: "Chrono Glass",
-                shoe_cosmic_shatter: "Cosmic Shatter",
-                equip_shoe_hint: "Coin Qazanmaq üçün Mağazadan Ayaqqabı Geyinin",
-                multiplier_duration_clean: "Çarpan • 30dəq Müddət",
-                premium_digital_items: "PREMİUM RƏQƏMSAL MƏHSULLAR",
-                footer_copy: "&copy; 2026 Steprize. Hərəkət Et Qazan & Marketplace."
+                hero_description: "Fiziki fəaliyyətinizi mükafatlara çevirmək üçün Steprize-ı yükləyin. Təkmilləşdirilmiş sensor füzyon texnologiyamız atdığınız hər addımı dəqiqliklə izləyir.",
+                btn_download: "APK Yüklə",
+                how_it_works_title: "NECƏ İŞLƏYİR",
+                how_it_works_p1: "Steprize, fiziki hərəkətinizi real vaxtda təsdiqləmək üçün qabaqcıl Android sensor memarlığından istifadə edir. Cihazın yüksək dəqiqlikli <strong>STEP_DETECTOR</strong> və <strong>STEP_COUNTER</strong> sensorlarının mürəkkəb birləşməsindən istifadə edərək, tətbiq hər addımı minimum batareya sərfi ilə qeyd edir.",
+                how_it_works_p2: "Fəaliyyətinizin orijinallığını təmin etmək üçün <strong>Fused Location Provider</strong> təbəqəmiz, hərəkəti GPS məlumatları ilə ağıllı şəkildə çarpaz istinad edir. Bu çoxlaylı doğrulama, simulyasiya edilmiş fəaliyyətin qarşısını alaraq qazandığınız hər COIN-in real fiziki səyin nəticəsi olmasını təmin edir.",
+                how_it_works_p3: "Bütün məlumatlar şifrələnmiş kanallar vasitəsilə arxa sistemimizlə təhlükəsiz şəkildə sinxronizasiya olunur. Siz gəzdikcə, tətbiq aktiv idman ayaqqabılarınıza əsasən qazancınızı hesablayır və balansı dərhal yeniləyir.",
+                support_title: "DƏSTƏK",
+                support_description: "Kömək lazımdır? Dəstək komandamız texniki problemlər və ya hesab sorğuları ilə bağlı sizə kömək etməyə hazırdır.",
+                support_in_app_title: "Tətbiqdaxili Dəstək",
+                support_in_app_desc: "Mütəxəssislərimizlə birbaşa əlaqə yaratmaq üçün profilinizdəki Dəstək bölməsinə daxil olun.",
+                support_chat_title: "İcma Söhbəti",
+                support_chat_desc: "Real vaxt icma köməyi və yeniliklər üçün rəsmi Telegram və Discord kanallarımıza qoşulun.",
+                footer_copy: "&copy; 2026 Steprize. Rəsmi APK Paylanma Portalı."
             },
             ru: {
                 nav_home: "Главная",
-                nav_store: "Магазин",
-                nav_inventory: "Инвентарь",
+                nav_how_it_works: "Как это работает",
+                nav_support: "Поддержка",
                 nav_launch: "Запустить приложение",
                 hero_title: 'ДВИГАЙСЯ И ЗАРАБАТЫВАЙ.<br><span class="neon-text">УЛУЧШАЙ СВОЮ ЖИЗНЬ.</span>',
-                hero_description: "Отслеживайте свои шаги и GPS в реальном времени, чтобы зарабатывать COINS. Испытайте новый уровень фитнес-наград с кроссовками Nitro Starter, Chrono Glass и Cosmic Shatter.",
-                btn_download: "Скачать сейчас",
-                marketplace_title: "Marketplace",
-                marketplace_description: "Обменивайте свои заработанные шаги на цифровые подписки и уровневые кроссовки.",
-                shoe_nitro_starter: "Nitro Starter",
-                shoe_chrono_glass: "Chrono Glass",
-                shoe_cosmic_shatter: "Cosmic Shatter",
-                equip_shoe_hint: "Экипируйте обувь из магазина, чтобы зарабатывать монеты",
-                multiplier_duration_clean: "Множитель • Длительность 30м",
-                premium_digital_items: "ПРЕМИАЛЬНЫЕ ЦИФРОВЫЕ ТОВАРЫ",
-                footer_copy: "&copy; 2026 Steprize. Move to Earn & Marketplace."
+                hero_description: "Загрузите Steprize, чтобы превратить свою физическую активность в награды. Наша передовая технология объединения датчиков точно отслеживает каждый ваш шаг.",
+                btn_download: "Скачать APK",
+                how_it_works_title: "КАК ЭТО РАБОТАЕТ",
+                how_it_works_p1: "Steprize использует передовую архитектуру сенсоров Android для проверки вашей физической активности в режиме реального времени. Используя сочетание высокоточных датчиков <strong>STEP_DETECTOR</strong> и <strong>STEP_COUNTER</strong>, приложение фиксирует каждый шаг с минимальным расходом батареи.",
+                how_it_works_p2: "Чтобы гарантировать подлинность вашей активности, наш <strong>Fused Location Provider</strong> интеллектуально сопоставляет движение с данными GPS. Эта многоуровневая проверка предотвращает симуляцию активности, гарантируя, что каждый заработанный COIN представляет собой реальные физические усилия.",
+                how_it_works_p3: "Все данные надежно синхронизируются с нашей серверной частью по зашифрованным каналам. Пока вы идете, приложение рассчитывает ваш заработок на основе ваших активных кроссовок и мгновенно зачисляет его на ваш баланс.",
+                support_title: "ПОДДЕРЖКА",
+                support_description: "Нужна помощь? Наша служба поддержки готова помочь вам с любыми техническими проблемами или вопросами по аккаунту.",
+                support_in_app_title: "Поддержка в приложении",
+                support_in_app_desc: "Перейдите в раздел поддержки в своем профиле, чтобы создать прямой запрос к нашим специалистам.",
+                support_chat_title: "Чат сообщества",
+                support_chat_desc: "Присоединяйтесь к нашим официальным каналам в Telegram и Discord для получения помощи от сообщества и обновлений в реальном времени.",
+                footer_copy: "&copy; 2026 Steprize. Официальный портал распространения APK."
             },
             zh: {
                 nav_home: "首页",
-                nav_store: "商店",
-                nav_inventory: "库存",
+                nav_how_it_works: "工作原理",
+                nav_support: "支持",
                 nav_launch: "启动应用",
                 hero_title: '边动边赚。<br><span class="neon-text">升级你的生活。</span>',
-                hero_description: "实时追踪您的步数和 GPS 以赚取 COINS。通过 Nitro Starter、Chrono Glass 和 Cosmic Shatter 运动鞋体验更高层次的健身奖励。",
-                btn_download: "立即下载",
-                marketplace_title: "Marketplace",
-                marketplace_description: "将您辛勤赚取的步数兑换为数字订阅和分级运动鞋。",
-                shoe_nitro_starter: "Nitro Starter",
-                shoe_chrono_glass: "Chrono Glass",
-                shoe_cosmic_shatter: "Cosmic Shatter",
-                equip_shoe_hint: "从商店装备运动鞋以赚取金币",
-                multiplier_duration_clean: "倍数 • 30分钟时长",
-                premium_digital_items: "高级数字产品",
-                footer_copy: "&copy; 2026 Steprize. Move to Earn & Marketplace."
+                hero_description: "下载 Steprize，将您的体力活动转化为奖励。我们先进的传感器融合技术可准确追踪您的每一步。",
+                btn_download: "下载 APK",
+                how_it_works_title: "工作原理",
+                how_it_works_p1: "Steprize 利用先进的 Android 传感器架构实时验证您的身体运动。通过结合设备的高精度 <strong>STEP_DETECTOR</strong> 和 <strong>STEP_COUNTER</strong> 传感器，该应用能够以极低的电池消耗记录每一步。",
+                how_it_works_p2: "为了确保活动真实性，我们的 <strong>Fused Location Provider</strong> 会智能地将运动与 GPS 数据进行交叉对比。这种多层验证可防止模拟活动，确保您赚取的每一个 COIN 都代表真实的体力付出。",
+                how_it_works_p3: "所有数据均通过加密通道安全同步。当您步行时，应用会根据您穿着的运动鞋计算收益并立即存入您的余额，在健身目标与实际奖励之间建立无缝桥梁。",
+                support_title: "支持",
+                support_description: "需要帮助？我们的专业支持团队随时准备协助您解决任何技术问题或账户咨询。",
+                support_in_app_title: "应用内工单",
+                support_in_app_desc: "通过个人资料中的“支持”部分直接向我们的专业台席提交工单。",
+                support_chat_title: "社区聊天",
+                support_chat_desc: "加入我们的官方 Telegram 和 Discord 频道，获取实时社区帮助和更新。",
+                footer_copy: "&copy; 2026 Steprize. 官方 APK 分发入口。"
             }
         };
 
         function updateLanguage(lang) {
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
+                if (translations[lang] && translations[lang][key]) {
                     el.innerHTML = translations[lang][key];
                 }
             });
