@@ -3,147 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steprize - Step Tracking & Rewards</title>
+    <title>STEPRIZE — Move to Earn</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #050505;
-        }
-        .neon-text {
-            color: #00ff88;
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-        }
-        .neon-border {
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.1);
-        }
-        .neon-button {
-            background: linear-gradient(135deg, #00ff88 0%, #00ffee 100%);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
-            transition: all 0.3s ease;
-        }
-        .neon-button:hover {
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
-            transform: translateY(-2px);
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(0, 255, 136, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
-        }
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .lang-selector {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            color: #fff;
-            padding: 4px 8px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-        .lang-selector:hover {
-            border-color: #00ff88;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
-        }
-        .lang-selector option {
-            background: #0a0a0a;
-            color: #fff;
-        }
+        :root { --primary: #0057FF; --primary-dark: #0046D5; --primary-light: #E8F0FF; }
+        body { font-family: 'Inter', sans-serif; background: #F5F7FA; color: #111827; }
+        .gradient-text { background: linear-gradient(135deg, #0057FF, #0046D5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-blue { background: linear-gradient(135deg, #0057FF, #0046D5); }
+        .gradient-blue-light { background: linear-gradient(135deg, #E8F0FF, #D6E4FF); }
+        .card-shadow { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0, 87, 255, 0.12); }
+        .btn-primary { background: linear-gradient(135deg, #0057FF, #0046D5); box-shadow: 0 4px 16px rgba(0, 87, 255, 0.3); transition: all 0.3s ease; }
+        .btn-primary:hover { box-shadow: 0 8px 28px rgba(0, 87, 255, 0.45); transform: translateY(-2px); }
+        .btn-outline { border: 1.5px solid #0057FF; color: #0057FF; transition: all 0.3s ease; }
+        .btn-outline:hover { background: #E8F0FF; }
+        .section-title { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.02em; line-height: 1.15; }
+        @media (max-width: 768px) { .section-title { font-size: 1.75rem; } }
+        .glass-nav { background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .lang-selector { background: #F5F7FA; border: 1px solid #E5E7EB; color: #111827; padding: 6px 12px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; outline: none; }
+        .lang-selector:focus { border-color: #0057FF; box-shadow: 0 0 0 3px rgba(0,87,255,0.1); }
+        .feature-icon { width: 48px; height: 48px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        .float-anim { animation: float 3s ease-in-out infinite; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeInUp 0.6s ease-out both; }
+        .fade-in-1 { animation-delay: 0.1s; }
+        .fade-in-2 { animation-delay: 0.2s; }
+        .fade-in-3 { animation-delay: 0.3s; }
+        .blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
     </style>
 </head>
-<body class="text-gray-100 selection:bg-emerald-500 selection:text-black">
+<body>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass py-4">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="text-2xl font-extrabold tracking-tighter flex items-center">
-                <span class="neon-text mr-2">STEP</span>RIZE
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-extrabold tracking-tight flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg gradient-blue flex items-center justify-center text-white text-sm font-black">S</span>
+                <span>TEP<span class="text-[#0057FF]">RIZE</span></span>
             </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-                <a href="#" class="hover:text-white transition-colors" data-i18n="nav_home">Home</a>
-                <a href="#how-it-works" class="hover:text-white transition-colors" data-i18n="nav_how_it_works">How It Works</a>
-                <a href="#support" class="hover:text-white transition-colors" data-i18n="nav_support">Support</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
+                <a href="#features" class="hover:text-[#0057FF] transition-colors" data-i18n="nav_features">Features</a>
+                <a href="#how-it-works" class="hover:text-[#0057FF] transition-colors" data-i18n="nav_how_it_works">How It Works</a>
+                <a href="#download" class="hover:text-[#0057FF] transition-colors" data-i18n="nav_download">Download</a>
+                <a href="#support" class="hover:text-[#0057FF] transition-colors" data-i18n="nav_support">Support</a>
             </div>
-            <div class="flex items-center gap-4">
-                <select id="languageSelector" class="lang-selector">
-                    <option value="en">EN</option>
-                    <option value="tr">TR</option>
-                    <option value="az">AZ</option>
-                    <option value="ru">RU</option>
-                    <option value="zh">ZH</option>
-                </select>
-            </div>
+            <select id="languageSelector" class="lang-selector">
+                <option value="en">EN</option>
+                <option value="tr">TR</option>
+                <option value="az">AZ</option>
+                <option value="ru">RU</option>
+                <option value="zh">ZH</option>
+            </select>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-emerald-600/20 rounded-full blur-[120px] -z-10"></div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-[120px] -z-10"></div>
-        
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h1 class="text-5xl md:text-8xl font-black mb-8 leading-tight tracking-tighter" data-i18n="hero_title">
-                MOVE TO EARN.<br>
-                <span class="neon-text">LEVEL UP YOUR LIFE.</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed" data-i18n="hero_description">
-                Download Steprize to turn your physical activity into rewards. Our advanced sensor fusion technology accurately tracks every step you take.
-            </p>
-            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                <a href="/steprize-website/downloads/steprize.apk" download="steprize.apk" target="_blank" class="neon-button pulse-animation text-black px-12 py-5 rounded-2xl text-xl font-bold flex items-center gap-3">
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414C17.2024 15.3414 16.9419 15.6019 16.9419 15.9225V17.0847H13.1613V6.91529H16.9419V8.0775C16.9419 8.39811 17.2024 8.65863 17.523 8.65863C17.8437 8.65863 18.1042 8.39811 18.1042 8.0775V6.33412C18.1042 5.3722 17.3241 4.59216 16.3622 4.59216H13.1613V2.41176C13.1613 2.09115 12.9008 1.83063 12.5801 1.83063H11.4187C11.0981 1.83063 10.8376 2.09115 10.8376 2.41176V4.59216H7.63668C6.67476 4.59216 5.89472 5.3722 5.89472 6.33412V8.0775C5.89472 8.39811 6.15524 8.65863 6.47585 8.65863C6.79646 8.65863 7.05698 8.39811 7.05698 8.0775V6.91529H10.8376V17.0847H7.05698V15.9225C7.05698 15.6019 6.79646 15.3414 6.47585 15.3414C6.15524 15.3414 5.89472 15.6019 5.89472 15.9225V17.6659C5.89472 18.6278 6.67476 19.4078 7.63668 19.4078H10.8376V21.5882C10.8376 21.9088 11.0981 22.1694 11.4187 22.1694H12.5801C12.9008 22.1694 13.1613 21.5882V19.4078H16.3622C17.3241 19.4078 18.1042 18.6278 18.1042 17.6659V15.9225C18.1042 15.6019 17.8437 15.3414 17.523 15.3414Z"/></svg>
-                    <span data-i18n="btn_download">Download APK</span>
-                </a>
-            </div>
-        </div>
-    </section>
+    <!-- Hero -->
+    <section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+        <div class="blob w-[400px] h-[400px] bg-[#0057FF]/10 top-[-100px] left-[-100px]"></div>
+        <div class="blob w-[300px] h-[300px] bg-[#0046D5]/8 bottom-0 right-0"></div>
 
-    <!-- Content Sections -->
-    <section class="py-24 relative border-t border-white/5">
-        <div class="max-w-4xl mx-auto px-6">
-            <!-- How It Works -->
-            <div id="how-it-works" class="mb-32">
-                <h2 class="text-4xl md:text-5xl font-black mb-10 tracking-tighter" data-i18n="how_it_works_title">HOW IT WORKS</h2>
-                <div class="space-y-8 text-gray-400 text-lg leading-relaxed font-light">
-                    <p data-i18n="how_it_works_p1">
-                        Steprize leverages advanced Android sensor architecture to verify your physical movement in real-time. By utilizing a sophisticated fusion of the device's high-precision <strong>STEP_DETECTOR</strong> and <strong>STEP_COUNTER</strong> sensors, the app captures every stride with minimal battery impact.
-                    </p>
-                    <p data-i18n="how_it_works_p2">
-                        To ensure the authenticity of your activity, our <strong>Fused Location Provider</strong> intelligently cross-references movement with GPS data. This multi-layered validation prevents simulated activity, ensuring that every COIN you earn represents genuine physical effort.
-                    </p>
-                    <p data-i18n="how_it_works_p3">
-                        All data is securely synchronized with our backend via encrypted channels. As you walk, the app calculates your earnings based on your active sneakers and credits your balance instantly, creating a seamless bridge between your fitness goals and tangible rewards.
-                    </p>
+        <div class="max-w-6xl mx-auto px-6 w-full">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="flex-1 text-center lg:text-left">
+                    <div class="fade-in fade-in-1">
+                        <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold gradient-blue text-white mb-6">v1.0.1 — Now Available</span>
+                        <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-tight mb-6">
+                            <span class="gradient-text">MOVE TO EARN.</span><br>
+                            <span>LEVEL UP YOUR LIFE.</span>
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-500 max-w-xl leading-relaxed mb-10" data-i18n="hero_desc">
+                            Turn every step into real rewards. Steprize tracks your physical activity and rewards you with coins you can redeem.
+                        </p>
+                    </div>
+                    <div class="fade-in fade-in-2 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                        <a href="/steprize-website/downloads/steprize.apk" download="steprize.apk"
+                           class="btn-primary text-white px-8 py-4 rounded-2xl text-base font-bold flex items-center gap-3 w-full sm:w-auto justify-center">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0-4-4m4 4 4-4M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+                            <span data-i18n="btn_download">Download APK</span>
+                        </a>
+                        <a href="#how-it-works"
+                           class="btn-outline px-8 py-4 rounded-2xl text-base font-bold w-full sm:w-auto text-center">
+                            <span data-i18n="btn_learn_more">Learn More</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Support -->
-            <div id="support">
-                <h2 class="text-4xl md:text-5xl font-black mb-10 tracking-tighter" data-i18n="support_title">SUPPORT</h2>
-                <div class="glass p-8 md:p-12 rounded-3xl border-emerald-500/20">
-                    <p class="text-gray-400 text-lg mb-8" data-i18n="support_description">
-                        Need assistance? Our dedicated support team is ready to help you with any technical issues or account inquiries.
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-500/30 transition-colors">
-                            <h4 class="text-white font-bold mb-2" data-i18n="support_in_app_title">In-App Tickets</h4>
-                            <p class="text-sm text-gray-500" data-i18n="support_in_app_desc">Access the Support section in your profile to open a direct ticket with our specialized desk.</p>
-                        </div>
-                        <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-500/30 transition-colors">
-                            <h4 class="text-white font-bold mb-2" data-i18n="support_chat_title">Community Chat</h4>
-                            <p class="text-sm text-gray-500" data-i18n="support_chat_desc">Join our official Telegram and Discord channels for real-time community assistance and updates.</p>
+                <div class="flex-1 flex justify-center fade-in fade-in-3">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                        <div class="absolute inset-0 gradient-blue rounded-[32px] opacity-10 rotate-6"></div>
+                        <div class="absolute inset-0 gradient-blue-light rounded-[32px] -rotate-3"></div>
+                        <div class="absolute inset-0 bg-white rounded-[32px] card-shadow flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="w-20 h-20 rounded-2xl gradient-blue flex items-center justify-center mx-auto mb-4 float-anim">
+                                    <span class="text-white text-3xl font-black">S</span>
+                                </div>
+                                <div class="text-2xl font-black tracking-tight">STEP<span class="text-[#0057FF]">RIZE</span></div>
+                                <div class="text-gray-400 text-sm mt-1">Move to Earn</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -151,20 +109,108 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-xl font-bold tracking-tighter">
-                <span class="neon-text mr-1">STEP</span>RIZE
+    <!-- Features -->
+    <section id="features" class="py-24 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title text-center mb-4" data-i18n="features_title">Why STEPRIZE?</h2>
+            <p class="text-gray-500 text-center max-w-xl mx-auto mb-16" data-i18n="features_subtitle">Built with precision sensor technology to ensure every step you take is rewarded fairly.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-3xl p-8 card-shadow">
+                    <div class="feature-icon gradient-blue-light text-[#0057FF] mb-5">👟</div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feature_1_title">Premium Sneakers</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-i18n="feature_1_desc">Unlock unique sneakers with different multipliers and earning windows. Each pair boosts your coin generation rate.</p>
+                </div>
+                <div class="card-hover bg-white rounded-3xl p-8 card-shadow">
+                    <div class="feature-icon gradient-blue-light text-[#0057FF] mb-5">🎡</div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feature_2_title">Lucky Wheel</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-i18n="feature_2_desc">Spin the wheel daily for a chance to win bonus coins, exclusive sneakers, and other exciting prizes.</p>
+                </div>
+                <div class="card-hover bg-white rounded-3xl p-8 card-shadow">
+                    <div class="feature-icon gradient-blue-light text-[#0057FF] mb-5">🏆</div>
+                    <h3 class="text-xl font-bold mb-3" data-i18n="feature_3_title">Leaderboard</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-i18n="feature_3_desc">Compete with the community. The more you move, the higher you climb on the global rankings.</p>
+                </div>
             </div>
-            <p class="text-gray-500 text-sm" data-i18n="footer_copy">
-                &copy; 2026 Steprize. Official APK Distribution Portal.
-            </p>
-            <div class="flex space-x-6">
-                <a href="/steprize-website/privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">Twitter</a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">Telegram</a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">Discord</a>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title text-center mb-4" data-i18n="hiw_title">How It Works</h2>
+            <p class="text-gray-500 text-center max-w-xl mx-auto mb-16" data-i18n="hiw_subtitle">From step tracking to real rewards — here's how Steprize turns your movement into value.</p>
+            <div class="grid md:grid-cols-3 gap-12 relative">
+                <div class="hidden md:block absolute top-1/2 left-[16%] right-[16%] h-0.5 bg-gray-100 -translate-y-1/2"></div>
+
+                <div class="text-center relative">
+                    <div class="w-14 h-14 rounded-2xl gradient-blue text-white text-xl font-black flex items-center justify-center mx-auto mb-5 relative z-10">1</div>
+                    <h3 class="font-bold text-lg mb-2" data-i18n="hiw_step_1_title">Walk & Run</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-i18n="hiw_step_1_desc">Your phone's advanced sensors detect every step automatically with minimal battery usage.</p>
+                </div>
+                <div class="text-center relative">
+                    <div class="w-14 h-14 rounded-2xl gradient-blue text-white text-xl font-black flex items-center justify-center mx-auto mb-5 relative z-10">2</div>
+                    <h3 class="font-bold text-lg mb-2" data-i18n="hiw_step_2_title">Earn Coins</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-i18n="hiw_step_2_desc">Your active sneakers determine your earning rate. The better the shoe, the faster you earn.</p>
+                </div>
+                <div class="text-center relative">
+                    <div class="w-14 h-14 rounded-2xl gradient-blue text-white text-xl font-black flex items-center justify-center mx-auto mb-5 relative z-10">3</div>
+                    <h3 class="font-bold text-lg mb-2" data-i18n="hiw_step_3_title">Redeem Rewards</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-i18n="hiw_step_3_desc">Exchange your coins for gift cards, premium subscriptions, and exclusive items.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download -->
+    <section id="download" class="py-24">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="gradient-blue rounded-3xl p-12 md:p-16 relative overflow-hidden">
+                <div class="blob w-64 h-64 bg-white/10 top-[-30px] right-[-30px]"></div>
+                <div class="blob w-48 h-48 bg-white/5 bottom-[-20px] left-[-20px]"></div>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-4 relative z-10" data-i18n="download_title">Get Started Today</h2>
+                <p class="text-white/70 max-w-lg mx-auto mb-10 relative z-10" data-i18n="download_desc">Download the latest APK directly. No app store required. Version 1.0.1 — 64 MB.</p>
+                <a href="/steprize-website/downloads/steprize.apk" download="steprize.apk"
+                   class="inline-flex items-center gap-3 bg-white text-[#0057FF] px-10 py-5 rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 relative z-10">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0-4-4m4 4 4-4M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+                    <span data-i18n="btn_download_main">Download APK v1.0.1</span>
+                </a>
+                <p class="text-white/50 text-sm mt-6 relative z-10" data-i18n="download_note">Android 8.0+ required. 64-bit devices only.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support -->
+    <section id="support" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="section-title text-center mb-4" data-i18n="support_title">Support</h2>
+            <p class="text-gray-500 text-center max-w-xl mx-auto mb-16" data-i18n="support_desc">Need help? Our team is ready to assist you with any questions or issues.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-[#F5F7FA] rounded-3xl p-8 card-hover border border-gray-100">
+                    <div class="feature-icon gradient-blue-light text-[#0057FF] mb-5">🎫</div>
+                    <h3 class="text-lg font-bold mb-2" data-i18n="support_card_1_title">In-App Support</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-i18n="support_card_1_desc">Open a support ticket directly from the app. Our team responds within 24 hours.</p>
+                </div>
+                <div class="bg-[#F5F7FA] rounded-3xl p-8 card-hover border border-gray-100">
+                    <div class="feature-icon gradient-blue-light text-[#0057FF] mb-5">💬</div>
+                    <h3 class="text-lg font-bold mb-2" data-i18n="support_card_2_title">Community</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-i18n="support_card_2_desc">Join our Telegram community for real-time help, updates, and feature discussions.</p>
+                    <a href="https://t.me/steprize" target="_blank" class="inline-block mt-4 text-[#0057FF] font-bold text-sm hover:underline">Join Telegram →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2 text-lg font-extrabold tracking-tight">
+                <span class="w-7 h-7 rounded-lg gradient-blue flex items-center justify-center text-white text-xs font-black">S</span>
+                STEP<span class="text-[#0057FF]">RIZE</span>
+            </div>
+            <p class="text-gray-400 text-sm" data-i18n="footer_copy">&copy; 2026 Steprize. All rights reserved.</p>
+            <div class="flex gap-6 text-sm">
+                <a href="/steprize-website/privacy.html" class="text-gray-400 hover:text-[#0057FF] transition-colors font-medium">Privacy</a>
+                <a href="https://t.me/steprize" target="_blank" class="text-gray-400 hover:text-[#0057FF] transition-colors font-medium">Telegram</a>
             </div>
         </div>
     </footer>
@@ -172,99 +218,99 @@
     <script>
         const translations = {
             en: {
-                nav_home: "Home",
-                nav_how_it_works: "How It Works",
-                nav_support: "Support",
-                hero_title: 'MOVE TO EARN.<br><span class="neon-text">LEVEL UP YOUR LIFE.</span>',
-                hero_description: "Download Steprize to turn your physical activity into rewards. Our advanced sensor fusion technology accurately tracks every step you take.",
-                btn_download: "Download APK v1.0.1",
-                how_it_works_title: "HOW IT WORKS",
-                how_it_works_p1: "Steprize leverages advanced Android sensor architecture to verify your physical movement in real-time. By utilizing a sophisticated fusion of the device's high-precision <strong>STEP_DETECTOR</strong> and <strong>STEP_COUNTER</strong> sensors, the app captures every stride with minimal battery impact.",
-                how_it_works_p2: "To ensure the authenticity of your activity, our <strong>Fused Location Provider</strong> intelligently cross-references movement with GPS data. This multi-layered validation prevents simulated activity, ensuring that every COIN you earn represents genuine physical effort.",
-                how_it_works_p3: "All data is securely synchronized with our backend via encrypted channels. As you walk, the app calculates your earnings based on your active sneakers and credits your balance instantly, creating a seamless bridge between your fitness goals and tangible rewards.",
-                support_title: "SUPPORT",
-                support_description: "Need assistance? Our dedicated support team is ready to help you with any technical issues or account inquiries.",
-                support_in_app_title: "In-App Tickets",
-                support_in_app_desc: "Access the Support section in your profile to open a direct ticket with our specialized desk.",
-                support_chat_title: "Community Chat",
-                support_chat_desc: "Join our official Telegram and Discord channels for real-time community assistance and updates.",
-                footer_copy: "&copy; 2026 Steprize. Official APK Distribution Portal."
+                nav_features: "Features", nav_how_it_works: "How It Works", nav_download: "Download", nav_support: "Support",
+                hero_desc: "Turn every step into real rewards. Steprize tracks your physical activity and rewards you with coins you can redeem.",
+                btn_download: "Download APK", btn_learn_more: "Learn More",
+                features_title: "Why STEPRIZE?", features_subtitle: "Built with precision sensor technology to ensure every step you take is rewarded fairly.",
+                feature_1_title: "Premium Sneakers", feature_1_desc: "Unlock unique sneakers with different multipliers and earning windows to boost your coin generation.",
+                feature_2_title: "Lucky Wheel", feature_2_desc: "Spin the wheel daily for a chance to win bonus coins, exclusive sneakers, and exciting prizes.",
+                feature_3_title: "Leaderboard", feature_3_desc: "Compete with the community. The more you move, the higher you climb on the global rankings.",
+                hiw_title: "How It Works", hiw_subtitle: "From step tracking to real rewards.",
+                hiw_step_1_title: "Walk & Run", hiw_step_1_desc: "Your phone's advanced sensors detect every step automatically with minimal battery usage.",
+                hiw_step_2_title: "Earn Coins", hiw_step_2_desc: "Your active sneakers determine your earning rate. The better the shoe, the faster you earn.",
+                hiw_step_3_title: "Redeem Rewards", hiw_step_3_desc: "Exchange your coins for gift cards, premium subscriptions, and exclusive items.",
+                download_title: "Get Started Today", download_desc: "Download the latest APK directly. No app store required. Version 1.0.1 — 64 MB.",
+                btn_download_main: "Download APK v1.0.1", download_note: "Android 8.0+ required. 64-bit devices only.",
+                support_title: "Support", support_desc: "Need help? Our team is ready to assist you.",
+                support_card_1_title: "In-App Support", support_card_1_desc: "Open a support ticket directly from the app. Our team responds within 24 hours.",
+                support_card_2_title: "Community", support_card_2_desc: "Join our Telegram community for real-time help, updates, and feature discussions.",
+                footer_copy: "&copy; 2026 Steprize. All rights reserved."
             },
             tr: {
-                nav_home: "Ana Sayfa",
-                nav_how_it_works: "Nasıl Çalışır",
-                nav_support: "Destek",
-                hero_title: 'HAREKET ET KAZAN.<br><span class="neon-text">HAYATINI SEVİYE ATLAT.</span>',
-                hero_description: "Fiziksel aktivitenizi ödüllere dönüştürmek için Steprize'ı indirin. Gelişmiş sensör füzyon teknolojimiz attığınız her adımı doğru bir şekilde takip eder.",
-                btn_download: "APK İndir v1.0.1",
-                how_it_works_title: "NASIL ÇALIŞIR",
-                how_it_works_p1: "Steprize, fiziksel hareketinizi gerçek zamanlı olarak doğrulamak için gelişmiş Android sensör mimarisinden yararlanır. Cihazın yüksek hassasiyetli <strong>STEP_DETECTOR</strong> ve <strong>STEP_COUNTER</strong> sensörlerinin sofistike bir birleşimini kullanan uygulama, her adımı minimum pil tüketimiyle kaydeder.",
-                how_it_works_p2: "Aktivitenizin orijinalliğini sağlamak için <strong>Fused Location Provider</strong> katmanımız, hareketi GPS verileriyle akıllıca çapraz referanslar. Bu çok katmanlı doğrulama, simüle edilmiş aktiviteyi önleyerek kazandığınız her COIN'in gerçek fiziksel çabayı temsil etmesini sağlar.",
-                how_it_works_p3: "Tüm veriler, şifreli kanallar aracılığıyla arka ucumuzla güvenli bir şekilde senkronize edilir. Siz yürüdükçe, uygulama aktif spor ayakkabılarınıza göre kazancınızı hesaplar ve bakiyenize anında yansıtır, böylece fitness hedefleriniz ile somut ödüller arasında kesintisiz bir köprü oluşturur.",
-                support_title: "DESTEK",
-                support_description: "Yardıma mı ihtiyacınız var? Özel destek ekibimiz teknik sorunlar veya hesap sorguları konusunda size yardımcı olmaya hazır.",
-                support_in_app_title: "Uygulama İçi Destek",
-                support_in_app_desc: "Uzman ekibimizle doğrudan bir destek talebi oluşturmak için profilinizdeki Destek bölümüne erişin.",
-                support_chat_title: "Topluluk Sohbeti",
-                support_chat_desc: "Gerçek zamanlı topluluk yardımı ve güncellemeler için resmi Telegram ve Discord kanallarımıza katılın.",
-                footer_copy: "&copy; 2026 Steprize. Resmi APK Dağıtım Portalı."
+                nav_features: "Özellikler", nav_how_it_works: "Nasıl Çalışır", nav_download: "İndir", nav_support: "Destek",
+                hero_desc: "Her adımını gerçek ödüllere dönüştür. Steprize fiziksel aktiviteni takip eder ve kullanabileceğin coin'lerle ödüllendirir.",
+                btn_download: "APK İndir", btn_learn_more: "Daha Fazla",
+                features_title: "Neden STEPRIZE?", features_subtitle: "Attığın her adımın adilce ödüllendirilmesi için hassas sensör teknolojisiyle üretildi.",
+                feature_1_title: "Premium Ayakkabılar", feature_1_desc: "Farklı çarpanlar ve kazanç pencereleri olan benzersiz ayakkabıların kilidini aç.",
+                feature_2_title: "Şans Çarkı", feature_2_desc: "Her gün çarkı çevir, bonus coin'ler, özel ayakkabılar ve heyecan verici ödüller kazanma şansı yakala.",
+                feature_3_title: "Liderlik Tablosu", feature_3_desc: "Toplulukla rekabet et. Ne kadar çok hareket edersen, sıralamada o kadar yükselirsin.",
+                hiw_title: "Nasıl Çalışır", hiw_subtitle: "Adım takibinden gerçek ödüllere.",
+                hiw_step_1_title: "Yürü & Koş", hiw_step_1_desc: "Telefonunun gelişmiş sensörleri her adımını minimum pil tüketimiyle otomatik algılar.",
+                hiw_step_2_title: "Coin Kazan", hiw_step_2_desc: "Aktif ayakkabıların kazanç oranını belirler. Ayakkabı ne kadar iyiyse, o kadar hızlı kazanırsın.",
+                hiw_step_3_title: "Ödülleri Kullan", hiw_step_3_desc: "Coin'lerini hediye kartlarına, premium aboneliklere ve özel ürünlere dönüştür.",
+                download_title: "Hemen Başla", download_desc: "En son APK'yı doğrudan indir. App store gerekmez. Sürüm 1.0.1 — 64 MB.",
+                btn_download_main: "APK İndir v1.0.1", download_note: "Android 8.0+ gerekli. Sadece 64-bit cihazlar.",
+                support_title: "Destek", support_desc: "Yardıma mı ihtiyacın var? Ekibimiz yardıma hazır.",
+                support_card_1_title: "Uygulama İçi Destek", support_card_1_desc: "Uygulamadan doğrudan destek talebi oluştur. Ekibimiz 24 saat içinde yanıt verir.",
+                support_card_2_title: "Topluluk", support_card_2_desc: "Gerçek zamanlı yardım, güncellemeler ve tartışmalar için Telegram topluluğumuza katıl.",
+                footer_copy: "&copy; 2026 Steprize. Tüm hakları saklıdır."
             },
             az: {
-                nav_home: "Ana Səhifə",
-                nav_how_it_works: "Necə İşləyir",
-                nav_support: "Dəstək",
-                hero_title: 'HƏRƏKƏT ET QAZAN.<br><span class="neon-text">HƏYATINI YÜKSƏLT.</span>',
-                hero_description: "Fiziki fəaliyyətinizi mükafatlara çevirmək üçün Steprize-ı yükləyin. Təkmilləşdirilmiş sensor füzyon texnologiyamız atdığınız hər addımı dəqiqliklə izləyir.",
-                btn_download: "APK Yüklə v1.0.1",
-                how_it_works_title: "NECƏ İŞLƏYİR",
-                how_it_works_p1: "Steprize, fiziki hərəkətinizi real vaxtda təsdiqləmək üçün qabaqcıl Android sensor memarlığından istifadə edir. Cihazın yüksək dəqiqlikli <strong>STEP_DETECTOR</strong> və <strong>STEP_COUNTER</strong> sensorlarının mürəkkəb birləşməsindən istifadə edərək, tətbiq hər addımı minimum batareya sərfi ilə qeyd edir.",
-                how_it_works_p2: "Fəaliyyətinizin orijinallığını təmin etmək üçün <strong>Fused Location Provider</strong> təbəqəmiz, hərəkəti GPS məlumatları ilə ağıllı şəkildə çarpaz istinad edir. Bu çoxlaylı doğrulama, simulyasiya edilmiş fəaliyyətin qarşısını alaraq qazandığınız hər COIN-in real fiziki səyin nəticəsi olmasını təmin edir.",
-                how_it_works_p3: "Bütün məlumatlar şifrələnmiş kanallar vasitəsilə arxa sistemimizlə təhlükəsiz şəkildə sinxronizasiya olunur. Siz gəzdikcə, tətbiq aktiv idman ayaqqabılarınıza əsasən qazancınızı hesablayır və balansı dərhal yeniləyir.",
-                support_title: "DƏSTƏK",
-                support_description: "Kömək lazımdır? Dəstək komandamız texniki problemlər və ya hesab sorğuları ilə bağlı sizə kömək etməyə hazırdır.",
-                support_in_app_title: "Tətbiqdaxili Dəstək",
-                support_in_app_desc: "Mütəxəssislərimizlə birbaşa əlaqə yaratmaq üçün profilinizdəki Dəstək bölməsinə daxil olun.",
-                support_chat_title: "İcma Söhbəti",
-                support_chat_desc: "Real vaxt icma köməyi və yeniliklər üçün rəsmi Telegram və Discord kanallarımıza qoşulun.",
-                footer_copy: "&copy; 2026 Steprize. Rəsmi APK Paylanma Portalı."
+                nav_features: "Xüsusiyyətlər", nav_how_it_works: "Necə İşləyir", nav_download: "Yüklə", nav_support: "Dəstək",
+                hero_desc: "Hər addımı real mükafatlara çevir. Steprize fiziki fəaliyyətini izləyir və səni coinlərlə mükafatlandırır.",
+                btn_download: "APK Yüklə", btn_learn_more: "Ətraflı",
+                features_title: "Niyə STEPRIZE?", features_subtitle: "Hər addımının ədalətli mükafatlandırılması üçün dəqiq sensor texnologiyası ilə qurulub.",
+                feature_1_title: "Premium Ayaqqabılar", feature_1_desc: "Fərqli çarpanlar və qazanc pəncərələri olan unikal ayaqqabıların kilidini aç.",
+                feature_2_title: "Uğur Çarxı", feature_2_desc: "Hər gün çarxı çevir, bonus coinlər, xüsusi ayaqqabılar və həyəcanlı mükafatlar qazanma şansı əldə et.",
+                feature_3_title: "Liderlik Cədvəli", feature_3_desc: "İcma ilə yarış. Nə qədər çox hərəkət etsən, reytinqdə o qədər yüksəlirsən.",
+                hiw_title: "Necə İşləyir", hiw_subtitle: "Addım izləmədən real mükafatlara.",
+                hiw_step_1_title: "Gəz & Qaç", hiw_step_1_desc: "Telefonunun qabaqcıl sensorları hər addımını avtomatik və az batareya sərfi ilə qeyd edir.",
+                hiw_step_2_title: "Coin Qazan", hiw_step_2_desc: "Aktiv ayaqqabıların qazanc nisbətini müəyyən edir. Ayaqqabı nə qədər yaxşıdırsa, bir o qədər sürətli qazanırsan.",
+                hiw_step_3_title: "Mükafatları Geri Al", hiw_step_3_desc: "Coinlərini hədiyyə kartlarına, premium abunəliklərə və xüsusi məhsullara çevir.",
+                download_title: "İndi Başla", download_desc: "Ən son APK-nı birbaşa yüklə. App store tələb olunmur. Versiya 1.0.1 — 64 MB.",
+                btn_download_main: "APK Yüklə v1.0.1", download_note: "Android 8.0+ tələb olunur. Yalnız 64-bit cihazlar.",
+                support_title: "Dəstək", support_desc: "Kömək lazımdır? Komandamız kömək etməyə hazırdır.",
+                support_card_1_title: "Tətbiqdaxili Dəstək", support_card_1_desc: "Tətbiqdən birbaşa dəstək sorğusu yarat. Komandamız 24 saat ərzində cavab verir.",
+                support_card_2_title: "İcma", support_card_2_desc: "Real vaxt yardımı, yeniliklər və müzakirələr üçün Telegram icmamıza qoşul.",
+                footer_copy: "&copy; 2026 Steprize. Bütün hüquqlar qorunur."
             },
             ru: {
-                nav_home: "Главная",
-                nav_how_it_works: "Как это работает",
-                nav_support: "Поддержка",
-                hero_title: 'ДВИГАЙСЯ И ЗАРАБАТЫВАЙ.<br><span class="neon-text">УЛУЧШАЙ СВОЮ ЖИЗНЬ.</span>',
-                hero_description: "Загрузите Steprize, чтобы превратить свою физическую активность в награды. Наша передовая технология объединения датчиков точно отслеживает каждый ваш шаг.",
-                btn_download: "Скачать APK v1.0.1",
-                how_it_works_title: "КАК ЭТО РАБОТАЕТ",
-                how_it_works_p1: "Steprize использует передовую архитектуру сенсоров Android для проверки вашей физической активности в режиме реального времени. Используя сочетание высокоточных датчиков <strong>STEP_DETECTOR</strong> и <strong>STEP_COUNTER</strong>, приложение фиксирует каждый шаг с минимальным расходом батареи.",
-                how_it_works_p2: "Чтобы гарантировать подлинность вашей активности, наш <strong>Fused Location Provider</strong> интеллектуально сопоставляет движение с данными GPS. Эта многоуровневая проверка предотвращает симуляцию активности, гарантируя, что каждый заработанный COIN представляет собой реальные физические усилия.",
-                how_it_works_p3: "Все данные надежно синхронизируются с нашей серверной частью по зашифрованным каналам. Пока вы идете, приложение рассчитывает ваш заработок на основе ваших активных кроссовок и мгновенно зачисляет его на ваш баланс.",
-                support_title: "ПОДДЕРЖКА",
-                support_description: "Нужна помощь? Наша служба поддержки готова помочь вам с любыми техническими проблемами или вопросами по аккаунту.",
-                support_in_app_title: "Поддержка в приложении",
-                support_in_app_desc: "Перейдите в раздел поддержки в своем профиле, чтобы создать прямой запрос к нашим специалистам.",
-                support_chat_title: "Чат сообщества",
-                support_chat_desc: "Присоединяйтесь к нашим официальным каналам в Telegram и Discord для получения помощи от сообщества и обновлений в реальном времени.",
-                footer_copy: "&copy; 2026 Steprize. Официальный портал распространения APK."
+                nav_features: "Возможности", nav_how_it_works: "Как работает", nav_download: "Скачать", nav_support: "Поддержка",
+                hero_desc: "Преврати каждый шаг в реальные награды. Steprize отслеживает твою физическую активность и награждает монетами.",
+                btn_download: "Скачать APK", btn_learn_more: "Узнать больше",
+                features_title: "Почему STEPRIZE?", features_subtitle: "Создано с использованием точной сенсорной технологии, чтобы каждый ваш шаг был справедливо вознагражден.",
+                feature_1_title: "Премиум Кроссовки", feature_1_desc: "Открывайте уникальные кроссовки с разными множителями и окнами заработка.",
+                feature_2_title: "Колесо Удачи", feature_2_desc: "Крутите колесо ежедневно для шанса выиграть бонусные монеты, эксклюзивные кроссовки и призы.",
+                feature_3_title: "Таблица Лидеров", feature_3_desc: "Соревнуйтесь с сообществом. Чем больше двигаетесь, тем выше поднимаетесь в рейтинге.",
+                hiw_title: "Как это работает", hiw_subtitle: "От отслеживания шагов до реальных наград.",
+                hiw_step_1_title: "Ходи и бегай", hiw_step_1_desc: "Передовые сенсоры телефона автоматически определяют каждый шаг с минимальным расходом батареи.",
+                hiw_step_2_title: "Зарабатывай монеты", hiw_step_2_desc: "Твои активные кроссовки определяют скорость заработка. Чем лучше кроссовки, тем быстрее ты зарабатываешь.",
+                hiw_step_3_title: "Обменивай награды", hiw_step_3_desc: "Обменивай монеты на подарочные карты, премиум-подписки и эксклюзивные товары.",
+                download_title: "Начни сегодня", download_desc: "Скачайте последний APK напрямую. App store не требуется. Версия 1.0.1 — 64 МБ.",
+                btn_download_main: "Скачать APK v1.0.1", download_note: "Требуется Android 8.0+. Только 64-битные устройства.",
+                support_title: "Поддержка", support_desc: "Нужна помощь? Наша команда готова помочь.",
+                support_card_1_title: "Поддержка в приложении", support_card_1_desc: "Откройте тикет прямо из приложения. Наша команда отвечает в течение 24 часов.",
+                support_card_2_title: "Сообщество", support_card_2_desc: "Присоединяйтесь к Telegram-сообществу для помощи в реальном времени и обновлений.",
+                footer_copy: "&copy; 2026 Steprize. Все права защищены."
             },
             zh: {
-                nav_home: "首页",
-                nav_how_it_works: "工作原理",
-                nav_support: "支持",
-                hero_title: '边动边赚。<br><span class="neon-text">升级你的生活。</span>',
-                hero_description: "下载 Steprize，将您的体力活动转化为奖励。我们先进的传感器融合技术可准确追踪您的每一步。",
-                btn_download: "下载 APK v1.0.1",
-                how_it_works_title: "工作原理",
-                how_it_works_p1: "Steprize 利用先进的 Android 传感器架构实时验证您的身体运动。通过结合设备的高精度 <strong>STEP_DETECTOR</strong> 和 <strong>STEP_COUNTER</strong> 传感器，该应用能够以极低的电池消耗记录每一步。",
-                how_it_works_p2: "为了确保活动真实性，我们的 <strong>Fused Location Provider</strong> 会智能地将运动与 GPS 数据进行交叉对比。这种多层验证可防止模拟活动，确保您赚取的每一个 COIN 都代表真实的体力付出。",
-                how_it_works_p3: "所有数据均通过加密通道安全同步。当您步行时，应用会根据您穿着的运动鞋计算收益并立即存入您的余额，在健身目标与实际奖励之间建立无缝桥梁。",
-                support_title: "支持",
-                support_description: "需要帮助？我们的专业支持团队随时准备协助您解决任何技术问题或账户咨询。",
-                support_in_app_title: "应用内工单",
-                support_in_app_desc: "通过个人资料中的“支持”部分直接向我们的专业台席提交工单。",
-                support_chat_title: "社区聊天",
-                support_chat_desc: "加入我们的官方 Telegram 和 Discord 频道，获取实时社区帮助和更新。",
-                footer_copy: "&copy; 2026 Steprize. 官方 APK 分发入口。"
+                nav_features: "功能", nav_how_it_works: "工作原理", nav_download: "下载", nav_support: "支持",
+                hero_desc: "将每一步转化为实际奖励。Steprize 追踪您的身体活动，并用可兑换的金币奖励您。",
+                btn_download: "下载APK", btn_learn_more: "了解更多",
+                features_title: "为什么选择 STEPRIZE？", features_subtitle: "采用精密传感器技术构建，确保您的每一步都得到公平奖励。",
+                feature_1_title: "高级运动鞋", feature_1_desc: "解锁具有不同加成和收益窗口的独特运动鞋，提升您的金币生成速度。",
+                feature_2_title: "幸运轮盘", feature_2_desc: "每天转动轮盘，有机会赢取 bonus 金币、限定运动鞋等精彩奖品。",
+                feature_3_title: "排行榜", feature_3_desc: "与社区竞争。您运动越多，在全球排名中就越高。",
+                hiw_title: "工作原理", hiw_subtitle: "从步数追踪到真实奖励。",
+                hiw_step_1_title: "步行与跑步", hiw_step_1_desc: "您手机的高级传感器自动检测每一步，耗电极少。",
+                hiw_step_2_title: "赚取金币", hiw_step_2_desc: "您激活的运动鞋决定赚取速度。鞋子越好，赚得越快。",
+                hiw_step_3_title: "兑换奖励", hiw_step_3_desc: "将您的金币兑换为礼品卡、高级订阅和独家商品。",
+                download_title: "立即开始", download_desc: "直接下载最新 APK。无需应用商店。版本 1.0.1 — 64 MB。",
+                btn_download_main: "下载APK v1.0.1", download_note: "需要 Android 8.0+。仅限 64 位设备。",
+                support_title: "支持", support_desc: "需要帮助？我们的团队随时为您服务。",
+                support_card_1_title: "应用内支持", support_card_1_desc: "直接在应用内提交支持工单。我们的团队将在 24 小时内回复。",
+                support_card_2_title: "社区", support_card_2_desc: "加入我们的 Telegram 社区，获取实时帮助、更新和功能讨论。",
+                footer_copy: "&copy; 2026 Steprize. 保留所有权利。"
             }
         };
 
@@ -276,24 +322,18 @@
                 }
             });
             localStorage.setItem('preferredLanguage', lang);
-            document.documentElement.lang = lang;
+            document.documentElement.lang = lang === 'tr' ? 'tr' : lang === 'az' ? 'az' : lang === 'ru' ? 'ru' : lang === 'zh' ? 'zh' : 'en';
         }
 
-        const languageSelector = document.getElementById('languageSelector');
-        
-        languageSelector.addEventListener('change', (e) => {
-            updateLanguage(e.target.value);
-        });
+        document.getElementById('languageSelector').addEventListener('change', (e) => updateLanguage(e.target.value));
 
         window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('preferredLanguage');
-            const browserLang = navigator.language.split('-')[0];
-            const defaultLang = savedLang || (translations[browserLang] ? browserLang : 'en');
-            
-            languageSelector.value = defaultLang;
-            updateLanguage(defaultLang);
+            const saved = localStorage.getItem('preferredLanguage');
+            const browser = navigator.language.split('-')[0];
+            const lang = saved || (translations[browser] ? browser : 'en');
+            document.getElementById('languageSelector').value = lang;
+            updateLanguage(lang);
         });
     </script>
-
 </body>
 </html>
